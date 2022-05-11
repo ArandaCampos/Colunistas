@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block titulo %} Cadastro {% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block body %}
+<div class="page">
+    <div class="container">
+        <div class="linear-center">
+            <h2 class="color-black signup" name="signup" id="text"></h2>
+            <h2 class="color-black animation-type" id="bar">_</h2>
+        </div>
+        <form class="column-center" action="" method="post">
+            {% csrf_token %}
+            
+            <div class="column-center gap-2">     
+                <input name="field-email" type="email" class="input bg-gray color-black" placeholder="E-mail">
+                <input name="field-username" type="text" class="input bg-gray color-black" placeholder="Username">
+                <div class="linear-center margin-left-1">
+                    <input id="password" name="field-password" type="password" class="input bg-gray color-black" placeholder="Senha">
+                    <img id="look-key-close" class="inside img-small" src="{% static 'img/close-eye-icon.png' %}">
+                    <img id="look-key-open" class="inside img-small none" src="{% static 'img/open-eye-icon.png' %}">
+                </div>
+            </div>
+            <div class="padding-top-2">
+                <input type="submit" value="Enviar" class="link btn-medium bg-gradient color-white" >
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/ban_paste.js' %}"></script>
+<script src="{% static 'js/typing_on_screen.js' %}"></script>
+<script src="{% static 'js/look_key.js' %}"></script>
+{% endblock %}

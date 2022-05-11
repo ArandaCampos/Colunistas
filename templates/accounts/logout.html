@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="column-center page">
+  <div class=" bg-gradient-dark-0 container padding-5 column-center">
+    <h1 class="link color-white">Sair</h1>
+
+    <p class="link color-white">Você tem certeza que deseja sair?</p>
+
+    <form method="post" action="/accounts/logout/">
+
+      {% csrf_token %}
+
+      <input type="hidden">
+      
+      <button class="btn-medium bg-gradient color-black" type="submit">Sair</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

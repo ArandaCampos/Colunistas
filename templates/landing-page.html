@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<section class="container column-center">
+    <span class="linear-center">
+        <h2 class="color-black" name="landingpage" id="text"></h2>
+        <h2 class="color-black animation-type" id="bar" >_</h2>
+    </span>
+    <section class="linear-center">
+        <p class="color-white"> Seja bem-vindo(a)</p>
+        {% if user.is_authenticated %}
+        <p class="color-white">, {{ user.username }}</p>
+        {% endif %}
+    </section>
+    <h1 class="color-white">LANDING PAGE</h1>
+</section>
+<script src="{% static 'js/typing_on_screen.js' %}"></script>
+{% endblock %}
