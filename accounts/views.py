@@ -29,7 +29,7 @@ def createUser(request):
         new_user = UserModels.objects.create(name=new_account)
         new_user.save()
 
-    return HttpResponseRedirect('/feed/')  
+    return HttpResponseRedirect('/home/')  
 
 @require_http_methods(["GET", "POST"])
 def loginUser(request):
@@ -40,12 +40,12 @@ def loginUser(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/feed/')  
-            return render(request, 'posts/home.html', {'error' : 'Usuário ou senha incorreto'})
+                return HttpResponseRedirect('/home/')  
+            return render(request, 'accounts/login.html', {'error' : 'Usuário ou senha incorreto'})
         elif request.method == 'GET':
             return render(request, 'accounts/login.html')
     else:
-        return HttpResponseRedirect('/feed/')    
+        return HttpResponseRedirect('/home/')    
 
 @login_required
 def logoutUser(request):

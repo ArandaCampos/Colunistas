@@ -223,18 +223,13 @@ h2{
 }
 
 .bg-gradient-dark{
-    background: rgb(14,8,51);
-    background: linear-gradient(90deg, rgba(14,8,51,1) 0%, rgba(0,0,3,1) 100%);
-}
-
-.bg-gradient-dark{
-    background: rgb(14,8,51);
-    background: linear-gradient(90deg, rgba(14,8,51,1) 0%, rgba(0,0,3,1) 100%);
+    background: rgb(41,1,65);
+    background: linear-gradient(90deg, rgba(41,1,65,1) 0%, rgba(14,0,26,1) 100%);
 }
 
 .bg-gradient-dark-0{
-    background: rgb(14,8,51);
-    background: linear-gradient(0deg, rgba(14,8,51,1) 0%, rgba(0,0,3,1) 100%);
+    background: rgb(41,1,65);
+    background: linear-gradient(0deg, rgba(41,1,65,1) 0%, rgba(14,0,26,1) 100%);
 }
 
 .color-white{

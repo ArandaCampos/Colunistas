@@ -1,2 +1,22 @@
-{{ user.username }}
-<h1>Home</h1>
+{% extends 'posts/base.html' %}
+
+{% block title %}
+Colunistas
+{% endblock %}
+
+
+{% block body %}
+    Seja bem-vindo(a), {{ user.username }}.
+    <h1>Home</h1>
+
+    {% if error %}
+        <p class="msg-error">{{ error }}</p>
+    {% endif %}
+
+    {% for post in posts %}
+        <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+        <p><a href="/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
+        <h3>{{ post.text|linebreaks }}</h3>
+        <span>{{ post.like }} <3</span>
+    {% endfor %}
+{% endblock %}

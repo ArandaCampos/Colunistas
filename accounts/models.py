@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class UserModels(models.Model):
     name = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
-    following = models.ManyToManyField('self', related_name='follower', symmetrical=False, blank=True)
+    following = models.ManyToManyField('self', related_name='follower', symmetrical=False, null=True)
 
     def __str__(self):
         return '{}'.format(self.name)
@@ -14,7 +14,7 @@ class UserModels(models.Model):
         return 'posts/{}/'.format(self.name)
 
 class PostsModels(models.Model):
-    author = models.ForeignKey(UserModels, related_name='posts', on_delete=models.CASCADE, editable=False)
+    author = models.ForeignKey(UserModels, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Título', default='Sem título')
     slug = models.SlugField(max_length=50, unique=True)
     text = models.TextField(verbose_name='Texto', null=False, blank=False)
