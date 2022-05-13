@@ -38,27 +38,27 @@
             {% csrf_token %}
             <input name="field-username" class="input bg-gray color-black" placeholder="Usuário ou E-mail" type="text">
             <input name="field-password" class="input bg-gray color-black" placeholder="Senha" type="password">
-            <button type="submit" class=" link btn-medium bg-gradient color-black">Entrar</button> 
+            <button type="submit" class="btn-medium bg-gradient color-white">Entrar</button> 
         </form>
 
-        <div class="column-center padding-top-2">
+        <div class="column-center padding-top-2 evenly">
             <div class="linear-center gap-1">
-                <hr class="line bg-black color-yellow">
-                <p class="ou color-black">ou</p>    
-                <hr class="line bg-black color-yellow">
+                <hr class="line color-clean-black">
+                <p>ou</p>    
+                <hr class="line color-clean-black">
             </div>
             <div class="btn-medium linear-center bg-gradient">
-                <a title="Redefinir Senha" class="link color-black" href="#">Redefinir senha</a>
+                <a title="Redefinir Senha" class="font-small color-white" href="#">Redefinir senha</a>
             </div>
         </div>
         <div class="linear-center gap-2 padding-top-5">
-            <a title="Google" class="font-normal font-medium linear-center color-black gap-1" href="#">
+            <a title="Google" class="link font-medium linear-center color-black gap-1" href="#">
                 <img class="img-small" src="{% static 'img/logo_g.png' %}" alt="Google">Logue com Google
             </a>
-            <a class="font-normal font-medium color-black" href="{% url 'account:signup' %}">Inscreva-se</a>
+            <a class="link font-medium color-black" href="{% url 'account:signup' %}">Inscreva-se</a>
         </div>
     </div>
 </section>
-<script src="{% static 'js/proibir_colar.js' %}"></script>
+<script src="{% static 'js/ban_paste.js' %}"></script>
 <script src="{% static 'js/typing_on_screen.js' %}"></script>
 {% endblock %}

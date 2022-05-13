@@ -9,6 +9,7 @@ urlpatterns = [
     path('profile/', listPost, name='profile'),
     path('post/<slug:slug>/', detailPost, name='detailpost'),
     path('home/profile', profile, name='myprofile'),
+    path('author/<str:accounts>/', listPost, name='detailpost'),
     # path('create-user/', createUser, name='create'),
     # path('logout/', logoutUser, name='logout'),
     # path('update-user/', updateUser, name='update'),

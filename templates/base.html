@@ -13,9 +13,9 @@
     {% block menu %}
     <header class="linear-center evenly top-fixed">
         {% if user.is_authenticated %}
-        <a class="color-black font-medium" href="{% url 'accounts:logout' %}">Sair</a>
+        <a class="link font-medium" href="{% url 'accounts:logout' %}">Sair</a>
         {% else %}
-        <a class="color-black font-medium" href="{% url 'accounts:login' %}">Entrar</a>
+        <a class="link font-medium" href="{% url 'accounts:login' %}">Entrar</a>
         {% endif %}
     </header>
     {% endblock %}
@@ -24,12 +24,17 @@
     {% endblock %}
 
     {% block footer %}
-    <footer class="linear-center gap-5 bottom-fixed bg-gradient-dark">
-        <a class="font-bold font-small color-white" href="#">Sobre</a>
-        <a class="font-bold font-small color-white" href="#">Central de Ajuda</a>
-        <a class="font-bold font-small color-white" href="#">Blog</a>
-        <a class="font-bold font-small color-white" href="#">Política de Privacidade</a>
-        <a class="font-bold font-small color-white" href="#">Acessibilidade</a>
+    <footer class="column-center gap-1 bottom-fixed bg-white">
+        <div>
+            <hr class="line1">
+        </div>
+        <div class="linear-center gap-5">
+            <a class="link font-small" href="#">Sobre</a>
+            <a class="link font-small" href="#">Central de Ajuda</a>
+            <a class="link font-small" href="#">Blog</a>
+            <a class="link font-small" href="#">Política de Privacidade</a>
+            <a class="link font-small" href="#">Acessibilidade</a>
+        </div>
     </footer>
     {% endblock %}
 </body>

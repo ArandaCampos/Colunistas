@@ -15,7 +15,7 @@ Colunistas
 
     {% for post in posts %}
         <a href="/post/{{ post.slug }}">{{ post.title }}</a>
-        <p><a href="/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
+        <p><a href="/author/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
         <h3>{{ post.text|linebreaks }}</h3>
         <span>{{ post.like }} <3</span>
     {% endfor %}

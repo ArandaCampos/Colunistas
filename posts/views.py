@@ -38,25 +38,6 @@ def listPost(request, accounts=None):
         }
         return render(request, 'posts/home.html', context)
 
-
-# @require_GET
-# def Post(request, accounts=None):
-#     if request.user.is_authenticated:
-#         try:
-#             if accounts == None:
-#                 user = UserModels.objects.get(name__username__exact=request.user.username)
-#             else:
-#                 user = UserModels.objects.get(name__username__exact=accounts)
-#         except:
-#             return render(request, 'posts/home.html', {'posts': 'Erro de autenticação'})
-#         people = user.following.filter()
-#         accounts_list = list(people)
-#         posts = PostsModels.objects.filter(author__name__username__in=accounts_list)
-#         context = {
-#             'posts' : posts
-#         }
-#         return render(request, 'posts/home.html', context)
-            
 @require_GET
 def detailPost(request, slug):
     if request.user.is_authenticated:
