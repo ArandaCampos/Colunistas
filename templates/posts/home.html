@@ -4,19 +4,26 @@
 Colunistas
 {% endblock %}
 
+{% block menu %}
+{% endblock %}
 
 {% block body %}
-    Seja bem-vindo(a), {{ user.username }}.
-    <h1>Home</h1>
-
-    {% if error %}
-        <p class="msg-error">{{ error }}</p>
-    {% endif %}
-
-    {% for post in posts %}
-        <a href="/post/{{ post.slug }}">{{ post.title }}</a>
-        <p><a href="/author/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
-        <h3>{{ post.text|linebreaks }}</h3>
-        <span>{{ post.like }} <3</span>
-    {% endfor %}
+<section class="bg-white full">
+    <section class="left-fixed bg-black color-clean-white">
+        Seja bem-vindo(a), {{ user.username }}.
+        <h1>Home</h1>
+    
+        {% if error %}
+            <p class="msg-error">{{ error }}</p>
+        {% endif %}
+    </section>
+    <section class="color-black body-left-fixed">
+        {% for post in posts %}
+            <a href="/post/{{ post.slug }}">{{ post.title }}</a>
+            <p><a href="/author/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
+            <h3>{{ post.text|linebreaks }}</h3>
+            <span>{{ post.like }} <3</span>
+        {% endfor %}
+    </section>
+</section>
 {% endblock %}

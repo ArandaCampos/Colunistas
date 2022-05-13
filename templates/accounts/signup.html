@@ -8,16 +8,16 @@
 {% endblock %}
 
 {% block body %}
-<div class="page">
-    <div class="container">
+<section class="bg-white">
+    <div class="page">
         <div class="linear-center">
             <h2 class="color-black signup" name="signup" id="text"></h2>
             <h2 class="color-black animation-type" id="bar">_</h2>
         </div>
-        <form class="column-center" action="" method="post">
+        <form class="column-center gap-1" action="" method="post">
             {% csrf_token %}
             
-            <div class="column-center gap-2">     
+            <div class="column-center gap-1">     
                 <input name="field-email" type="email" class="input bg-gray color-black" placeholder="E-mail">
                 <input name="field-username" type="text" class="input bg-gray color-black" placeholder="Username">
                 <div class="linear-center margin-left-1">
@@ -27,11 +27,12 @@
                 </div>
             </div>
             <div class="padding-top-2">
-                <input type="submit" value="Enviar" class="link btn-medium bg-gradient color-white" >
+                <input type="submit" value="Enviar" class="link-white btn-medium bg-gradient-dark color-white" >
             </div>
+            <a href="{% url 'accounts:login' %}"class="link-white btn-medium bg-gradient-dark linear-center color-white" >Cancelar</a>
         </form>
     </div>
-</div>
+</section>
 <script src="{% static 'js/ban_paste.js' %}"></script>
 <script src="{% static 'js/typing_on_screen.js' %}"></script>
 <script src="{% static 'js/look_key.js' %}"></script>
