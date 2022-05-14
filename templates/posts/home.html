@@ -1,5 +1,7 @@
 {% extends 'posts/base.html' %}
 
+{% load static %}
+
 {% block title %}
 Colunistas
 {% endblock %}
@@ -8,21 +10,53 @@ Colunistas
 {% endblock %}
 
 {% block body %}
-<section class="bg-white full">
-    <section class="left-fixed bg-black color-clean-white">
-        Seja bem-vindo(a), {{ user.username }}.
-        <h1>Home</h1>
-    
+<section class="bg-gradient-dark-0 full">
+    <section class="column-between evenly left-fixed color-clean-white">
+        <div>
+            <canvas class="circle-medium bg-gray"></canvas>
+        </div>
+        <div class="column-between gap-2">
+            <canvas class="circle-small bg-gray"></canvas>
+            <canvas class="circle-small bg-gray"></canvas>
+            <canvas class="circle-small bg-gray"></canvas>
+            <canvas class="circle-small bg-gray"></canvas>
+        </div>
+        <div>
+            <canvas class="circle-small bg-gray"></canvas>
+        </div>
         {% if error %}
             <p class="msg-error">{{ error }}</p>
         {% endif %}
     </section>
-    <section class="color-black body-left-fixed">
+    <section class="bg-white color-black body-left-fixed">
+        <div class="padding-top-5 padding-left-10 gap-2 linear-center">
+            <input class="input-research-man bg-gray" placeholder="Pesquisar..." type="text">
+            <button class="btn-small-small" href="">Enviar</button>
+        </div>
+        <div class="column-left padding-left-10 padding-top-5">
+            Seja bem-vindo(a), {{ user.username }}.
+            <p class="font-bigger font-normal">Feed</p>
+        </div>
         {% for post in posts %}
-            <a href="/post/{{ post.slug }}">{{ post.title }}</a>
-            <p><a href="/author/{{ post.author }}">{{ post.author|title }}</a> , {{ post.created }}</p>
-            <h3>{{ post.text|linebreaks }}</h3>
-            <span>{{ post.like }} <3</span>
+        <div class="column-left padding-left-10 padding-right-10">
+            <div class="linear-left gap-1">
+                <canvas class="circle bg-black"></canvas>
+                <div class="column-left padding-top-1">
+                    <a class="font-bigger font-bold color-black" href="/post/{{ post.slug }}">{{ post.title }}</a>
+                    <div class="linear-left">    
+                        <a class="font-small font-normal color-clean-black" href="/author/{{ post.author }}">{{ post.author|title }}</a>
+                        <a class="font-small font-line color-clean-black">, {{ post.created }}</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="font-bigger font-normal">{{ post.text|linebreaks }}</p>
+            </div>
+            <div class="linear-left"> 
+                <img class="img-medium" src="{% static 'img/like-icon.png' %}">
+                <div>{{ post.like }}</div>
+            </div>
+        </div>
         {% endfor %}
     </section>
 </section>
