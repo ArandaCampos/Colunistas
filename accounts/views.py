@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from accounts.models import UserModels
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET, require_http_methods
 
@@ -51,8 +51,6 @@ def loginUser(request):
             username_data = user.first().username
             pass_data = user.first().password
             if (username_input == username_data and password_input == pass_data):
-            # user = authenticate(username=username_input, password=password_input)
-            # if user is not None:
                 user = User.objects.get(username__exact=username_input)
                 login(request, user)
                 return HttpResponseRedirect('/home/')

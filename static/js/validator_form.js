@@ -49,8 +49,3 @@ $(document).ready(function () {
         return false;
     });
 })
-
-$(document).ready(function () {
-    // catch the form's submit event
-    
-})
