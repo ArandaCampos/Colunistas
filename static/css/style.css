@@ -25,14 +25,6 @@ header{
     justify-content: space-around;
 }
 
-ul, li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 3vw;
-}
-
 /* ------- Pagination -------- */
 .linear-center{
     display: flex;
@@ -104,10 +96,9 @@ ul, li{
 }
 
 .body-left-fixed{
+    left: 8px;
     width: 92vw;
-    height: 100vh;
-    right: 0vw;
-    position: fixed;
+    position: inherit;
     border-radius: 25px 0px 0px 25px;
 }
 
@@ -168,6 +159,10 @@ ul, li{
     font-size: 0.9rem;
 }
 
+.font-small-small{
+    font-size: 0.5rem;
+}
+
 .font-medium{
     font-size: medium;
 }
@@ -184,6 +179,7 @@ ul, li{
     text-align: justify;
 }
 
+/* SEM USO */
 .msg-error{
     margin-top: 0.2vh;
     justify-items: center;
@@ -314,6 +310,10 @@ ul, li{
     color: var(--gray);
 }
 
+.color-red{
+    color: red;
+}
+
 .color-black{
     color: var(--black);
 }
@@ -420,6 +420,10 @@ ul, li{
 
 .padding-top-5{
     padding-top: 5vh;
+}
+
+.padding-top-10{
+    padding-top: 10vh;
 }
 
 .padding-left-10{

@@ -10,8 +10,8 @@ Colunistas
 {% endblock %}
 
 {% block body %}
-<section class="bg-gradient-dark-0 full">
-    <section class="column-between evenly left-fixed color-clean-white">
+<section class="full">
+    <section class="bg-gradient-dark-0 column-between evenly left-fixed color-clean-white">
         <div>
             <canvas class="circle-medium bg-gray"></canvas>
         </div>
@@ -35,6 +35,16 @@ Colunistas
         </div>
         <div class="column-left padding-left-10 padding-top-5">
             Seja bem-vindo(a), {{ user.username }}.
+
+            <form class="column-center gap-2" action="" method="post">
+                {% csrf_token %}
+                <div class="column-center gap-1">   
+                    <input name="field-title" class="input bg-gray color-black" placeholder="Título (Sem-titulo)" type="text">
+                    <input name="field-text" class="input bg-gray color-black" placeholder="Texto" type="text">
+                </div>
+                <button type="submit" class="btn-small-small">Postar</button> 
+            </form>
+
             <p class="font-bigger font-normal">Feed</p>
         </div>
         {% for post in posts %}

@@ -10,16 +10,19 @@
 {% block body %}
 <section class="bg-white">
     <div class="page">
-        <div class="linear-center">
+        <div class="linear-center padding-top-5">
             <h2 class="color-black signup" name="signup" id="text"></h2>
             <h2 class="color-black animation-type" id="bar">_</h2>
         </div>
         <form class="column-center gap-1" action="" method="post">
             {% csrf_token %}
             
-            <div class="column-center gap-1">     
-                <input name="field-email" type="email" class="input bg-gray color-black" placeholder="E-mail">
-                <input name="field-username" type="text" class="input bg-gray color-black" placeholder="Username">
+
+            <ul class="errors column-center gap-1">
+            </ul> 
+            <div class="column-center gap-1">
+                <input name="field-email" id="email" type="email" class="input bg-gray color-black" placeholder="E-mail">
+                <input name="field-username" id="username" type="text" class="is-valid input bg-gray color-black" placeholder="Username">
                 <div class="linear-center margin-left-1">
                     <input id="password" name="field-password" type="password" class="input bg-gray color-black" placeholder="Senha">
                     <img id="look-key-close" class="inside img-small" src="{% static 'img/close-eye-icon.png' %}">
@@ -27,12 +30,14 @@
                 </div>
             </div>
             <div class="padding-top-2">
-                <input type="submit" value="Enviar" class="link-white btn-medium bg-gradient-dark color-white" >
+                <input type="submit" id="btn" value="Enviar" class="link-white btn-medium bg-gradient-dark color-white" >
             </div>
-            <a href="{% url 'accounts:login' %}"class="link-white btn-medium bg-gradient-dark linear-center color-white" >Cancelar</a>
+            <a href="{% url 'accounts:login' %}" class="link-white btn-medium bg-gradient-dark font-small linear-center color-white" >Cancelar</a>
         </form>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/validator_form.js' %}"></script>
 <script src="{% static 'js/ban_paste.js' %}"></script>
 <script src="{% static 'js/typing_on_screen.js' %}"></script>
 <script src="{% static 'js/look_key.js' %}"></script>

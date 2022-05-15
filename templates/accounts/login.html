@@ -9,7 +9,7 @@
 
 {% block body %}
 <section class="bg-white">
-    <div class="page bg-white"> ajashksjdhkjashfjkakj
+    <div class="page bg-white padding-top-5">
         <span class="linear-center gap-none">
             <h2 class="color-black" name="login" id="text"></h2>
             <h2 class="color-black animation-type" id="bar" >_</h2>
@@ -34,11 +34,11 @@
         <p class="msg-error"></p>
         {% endif %}
 
-        <form class="column-center gap-2" action="" method="post">
+        <form class="column-center gap-2" id="login-form" action="" method="post">
             {% csrf_token %}
             <div class="column-center gap-1">   
                 <input name="field-username" class="input bg-gray color-black" placeholder="Usuário ou E-mail" type="text">
-                <input name="field-password" class="input bg-gray color-black" placeholder="Senha" type="password">
+                <input id="password" name="field-password" class="input bg-gray color-black" placeholder="Senha" type="password">
             </div>
             <button type="submit" class="btn-medium color-clean-white">Entrar</button> 
         </form>

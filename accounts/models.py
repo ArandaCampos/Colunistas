@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class UserModels(models.Model):
     name = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
-    following = models.ManyToManyField('self', related_name='follower', symmetrical=False, null=True)
+    following = models.ManyToManyField('self', related_name='follower', symmetrical=False)
 
     def __str__(self):
         return '{}'.format(self.name)
