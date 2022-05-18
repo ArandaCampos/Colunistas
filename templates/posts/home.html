@@ -6,14 +6,13 @@
 Colunistas
 {% endblock %}
 
-{% block menu %}
-{% endblock %}
-
 {% block body %}
 <section class="full">
     <section class="bg-gradient-dark-0 column-between evenly left-fixed color-clean-white">
         <div>
-            <canvas class="circle-medium bg-gray"></canvas>
+            <a href="{% url 'posts:profile' %}">
+                <img src="{% static 'img/default-profile-photo-white.png' %}" class="img-small">
+            </a>
         </div>
         <div class="column-between gap-2">
             <canvas class="circle-small bg-gray"></canvas>
@@ -22,7 +21,7 @@ Colunistas
             <canvas class="circle-small bg-gray"></canvas>
         </div>
         <div>
-            <canvas class="circle-small bg-gray"></canvas>
+            <img src="{% static 'img/off-white.png' %}" class="img-small">
         </div>
         {% if error %}
             <p class="msg-error">{{ error }}</p>
@@ -50,7 +49,7 @@ Colunistas
         {% for post in posts %}
         <div class="column-left padding-left-10 padding-right-10">
             <div class="linear-left gap-1">
-                <canvas class="circle bg-black"></canvas>
+                <img src="{% static 'img/default-profile-photo.png' %}" class="img-big">
                 <div class="column-left padding-top-1">
                     <a class="font-bigger font-bold color-black" href="/post/{{ post.slug }}">{{ post.title }}</a>
                     <div class="linear-left">    

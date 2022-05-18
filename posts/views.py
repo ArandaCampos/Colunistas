@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from accounts.models import PostsModels, UserModels
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
@@ -71,3 +72,5 @@ def profile(request):
         posts = PostsModels.objects.filter(author__name__username__exact=request.user.username)
         context = { 'posts' : posts}
         return render(request, 'posts/profile.html', context)
+    else:
+        return render(request, 'accounts/login.html')

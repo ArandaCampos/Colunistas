@@ -6,6 +6,7 @@ Feed
 
 {% block body %}
 <h1>Profile</h1>
+
 {% for post in posts %}
     <a href="{{ post.get_absolute_url_post }}">{{ post.title }}</a>
     <p>Publicado por <a href="{{ post.get_absolute_url_author }}">{{ post.author }}</a> em {{ post.created }}</p>

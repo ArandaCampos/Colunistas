@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from accounts.models import UserModels
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET, require_http_methods
 
@@ -19,7 +19,6 @@ def signup(request):
             pass
         if (exist_user or exist_email):
             return JsonResponse({ 'msg' : 'Usuario ou Email ja existe'}, status=500)
-
         new_username = request.POST['field-username']
         new_email = request.POST['field-email']
         new_password = request.POST['field-password']
@@ -47,15 +46,17 @@ def loginUser(request):
         if request.method == 'POST':
             username_input = request.POST['field-username']
             password_input = request.POST['field-password']
-            user = User.objects.filter(username__exact=username_input)
-            username_data = user.first().username
-            pass_data = user.first().password
-            if (username_input == username_data and password_input == pass_data):
-                user = User.objects.get(username__exact=username_input)
-                login(request, user)
-                return HttpResponseRedirect('/home/')
+            
+            user = authenticate(username=username_input, password=password_input)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/home/')
+                else:
+                    return JsonResponse({'error' : 'Disabled account'}, status=406)
             else:
-                return JsonResponse({'error' : 'Usuário ou senha incorreto'}, status=406)
+                msg = username_input + ' | username_inpur  ' + password_input + ' ' 
+                return JsonResponse({'error' : msg}, status=406)
         elif request.method == 'GET':
             return render(request, 'accounts/login.html')
     else:
