@@ -7,66 +7,43 @@ Colunistas
 {% endblock %}
 
 {% block body %}
-<section class="full">
-    <section class="bg-gradient-dark-0 column-between evenly left-fixed color-clean-white">
-        <div>
-            <a href="{% url 'posts:profile' %}">
-                <img src="{% static 'img/default-profile-photo-white.png' %}" class="img-small">
-            </a>
-        </div>
-        <div class="column-between gap-2">
-            <canvas class="circle-small bg-gray"></canvas>
-            <canvas class="circle-small bg-gray"></canvas>
-            <canvas class="circle-small bg-gray"></canvas>
-            <canvas class="circle-small bg-gray"></canvas>
-        </div>
-        <div>
-            <img src="{% static 'img/off-white.png' %}" class="img-small">
-        </div>
-        {% if error %}
-            <p class="msg-error">{{ error }}</p>
-        {% endif %}
-    </section>
-    <section class="bg-white color-black body-left-fixed">
-        <div class="padding-top-5 padding-left-10 gap-2 linear-center">
-            <input class="input-research-man bg-gray" placeholder="Pesquisar..." type="text">
-            <button class="btn-small-small" href="">Enviar</button>
-        </div>
-        <div class="column-left padding-left-10 padding-top-5">
-            Seja bem-vindo(a), {{ user.username }}.
+{% if error %}
+    <p class="msg-error">{{ error }}</p>
+{% endif %}
+<div class="padding-top-5 gap-2 column-center">
+    <h2 class="font-medium font-normal color-black">Seja bem-vindo(a), {{ user.username }}.</h2>
+    <div class="linear-center gap-2">
+        <input class="research bg-gray" placeholder="Pesquisar..." type="text">
+        <button class="btn-small-small" href="">Enviar</button>
+    </div>
+</div>
+<div class="column-left padding-left-10 padding-top-5">
 
-            <form class="column-center gap-2" action="" method="post">
-                {% csrf_token %}
-                <div class="column-center gap-1">   
-                    <input name="field-title" class="input bg-gray color-black" placeholder="Título (Sem-titulo)" type="text">
-                    <input name="field-text" class="input bg-gray color-black" placeholder="Texto" type="text">
-                </div>
-                <button type="submit" class="btn-small-small">Postar</button> 
-            </form>
 
-            <p class="font-bigger font-normal">Feed</p>
-        </div>
-        {% for post in posts %}
-        <div class="column-left padding-left-10 padding-right-10">
-            <div class="linear-left gap-1">
-                <img src="{% static 'img/default-profile-photo.png' %}" class="img-big">
-                <div class="column-left padding-top-1">
-                    <a class="font-bigger font-bold color-black" href="/post/{{ post.slug }}">{{ post.title }}</a>
-                    <div class="linear-left">    
-                        <a class="font-small font-normal color-clean-black" href="/author/{{ post.author }}">{{ post.author|title }}</a>
-                        <a class="font-small font-line color-clean-black">, {{ post.created }}</a>
-                    </div>
+    <p class="font-bigger font-normal">Feed</p>
+</div>
+{% for post in posts %}
+<div class="gap-5">
+    <div class="column-left padding-left-10 padding-right-10">
+        <div class="linear-left gap-1">
+            <img src="{% static 'img/default-profile-photo.png' %}" class="img-big">
+            <div class="column-left padding-top-1">
+                <a class="font-bigger font-bold color-black" href="/post/{{ post.slug }}">{{ post.title }}</a>
+                <div class="linear-left">    
+                    <a class="font-small font-normal color-clean-black" href="/author/{{ post.author }}">{{ post.author|title }}</a>
+                    <a class="font-small font-line color-clean-black">, {{ post.created }}</a>
                 </div>
             </div>
-            <div>
-                <p class="font-bigger font-normal">{{ post.text|linebreaks }}</p>
-            </div>
-            <div class="linear-left"> 
-                <img class="img-medium" src="{% static 'img/like-icon.png' %}">
-                <div>{{ post.like }}</div>
-            </div>
         </div>
-        {% endfor %}
-    </section>
-</section>
+        <div>
+            <p class="font-bigger font-normal">{{ post.text|linebreaks }}</p>
+        </div>
+        <div class="linear-left"> 
+            <img class="img-medium" src="{% static 'img/like-icon.png' %}">
+            <div>{{ post.like }}</div>
+        </div>
+        <hr class="margin-top-2">
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

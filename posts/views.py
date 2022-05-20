@@ -3,6 +3,7 @@ from django.shortcuts import render
 from accounts.models import PostsModels, UserModels
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 # Create your views here.
 @require_http_methods(['GET', 'POST'])
@@ -66,11 +67,31 @@ def add_following(request, id):
             except:
                 pass
 
-@require_GET
+@require_http_methods(['GET', 'POST'])
 def profile(request):
-    if request.user.is_authenticated:
-        posts = PostsModels.objects.filter(author__name__username__exact=request.user.username)
-        context = { 'posts' : posts}
-        return render(request, 'posts/profile.html', context)
-    else:
-        return render(request, 'accounts/login.html')
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            posts = PostsModels.objects.filter(author__name__username__exact=request.user.username)
+            context = { 'posts' : posts}
+            return render(request, 'posts/profile.html', context)
+        else:
+            return render(request, 'accounts/login.html')
+    elif request.method == 'POST':
+        if request.user.is_authenticated:
+            title = request.POST['field-title']
+            text = request.POST['field-text']
+            try:
+                user = UserModels.objects.get(name__username__exact=request.user.username)
+            except:
+                return render(request, 'posts/profile.html', { 'error' : 'Usuário não encontrado'})
+    
+            slug = '-'.join([x.casefold() for x in title.split(' ')])
+            count = PostsModels.objects.filter(slug__startswith=slug).count()
+            
+            if count > 0:
+                slug += '-' + str(count + 1)
+
+            post = PostsModels.objects.create(author=user, title=title, text=text, slug=slug)
+            post.save()
+            return render(request, 'posts/profile.html', { 'error' : 'Publicado com sucesso!'})
+            

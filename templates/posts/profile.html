@@ -1,15 +1,44 @@
 {% extends 'posts/base.html' %}
 
+{% load static %}
+
 {% block title %}
 Feed
 {% endblock %}
 
 {% block body %}
-<h1>Profile</h1>
+{% if error %}
+    <p class="msg-error">{{ error }}</p>
+{% endif %}
+
+<form class="padding-top-5 gap-2 column-center" action="" method="post">
+    {% csrf_token %}
+    <div class="column-center gap-1">   
+        <input name="field-title" class="research bg-gray color-black" placeholder="Título (Sem-titulo)" type="text">
+        <textarea rows="12" cols="40" name="field-text" class="text-area input-text bg-gray color-black" placeholder="Texto" type="text"></textarea>
+    </div>
+    <button type="submit" class="btn-small-small">Postar</button> 
+</form>
 
 {% for post in posts %}
-    <a href="{{ post.get_absolute_url_post }}">{{ post.title }}</a>
-    <p>Publicado por <a href="{{ post.get_absolute_url_author }}">{{ post.author }}</a> em {{ post.created }}</p>
-    <h3>{{ post.text|linebreaks|truncatewords:10 }}</h3>
-    {% endfor %}
+<div class="gap-5">
+    <div class="column-left padding-left-10 padding-right-10">
+        <div class="column-left padding-top-1">
+            <a class="font-bigger font-bold color-black" href="/post/{{ post.slug }}">{{ post.title }}</a>
+            <div class="linear-left">    
+                <a class="font-small font-normal color-clean-black" href="/author/{{ post.author }}">{{ post.author|title }}</a>
+                <a class="font-small font-line color-clean-black">, {{ post.created }}</a>
+            </div>
+        </div>
+        <div>
+            <p class="font-bigger font-normal">{{ post.text|linebreaks }}</p>
+        </div>
+        <div class="linear-left"> 
+            <img class="img-medium" src="{% static 'img/like-icon.png' %}">
+            <div>{{ post.like }}</div>
+        </div>
+        <hr class="margin-top-2">
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

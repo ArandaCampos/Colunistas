@@ -96,10 +96,8 @@ header{
 }
 
 .body-left-fixed{
-    left: 8px;
-    width: 92vw;
-    position: inherit;
     border-radius: 25px 0px 0px 25px;
+    margin-left: 8vw;
 }
 
 .bottom-fixed{
@@ -363,18 +361,27 @@ header{
     background: var(--white);
 }
 
-.input, .input-research-man{
+.input, .research{
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
-    height: 6.1vh;
     width: 20.8vw;
+    height: 6.1vh;
     border-radius: 25px;
     padding-left: 1.2vw;
 }
 
-.input-research-man{
+.research{
     width: 50vw;
     border: 2px solid var(--black);
+}
+
+.input-text{
+    border: 2px solid var(--black);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    width: 50vw;
+    border-radius: 25px;
+    padding-left: 1.2vw;
 }
 
 @media (max-width: 800px){
